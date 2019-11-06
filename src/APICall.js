@@ -16,10 +16,10 @@ export const getResult = async () => {
     }
 }
 
-export const getSearchResult = async (searchValue) => {
+export const getSearchResult = async (query) => {
     //if (this.state.isLoading === false) this.controlToggle('isLoading')
     try {
-        const response = await fetch(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchValue}&limit=20&ts=${ts}&apikey=${publicKey}&hash=${hash}`); 
+        const response = await fetch(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&limit=20&ts=${ts}&apikey=${publicKey}&hash=${hash}`); 
         const myJson = await response.json();
         //console.log(myJson.data.results)
         return (myJson.data.results)
