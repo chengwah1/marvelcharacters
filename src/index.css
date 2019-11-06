@@ -57,5 +57,12 @@ body {
       margin: 0;
       border-radius: 0; } }
 
+.card {
+  border-style: solid;
+  border-width: 5px;
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  }
 
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import Characters from './Component/Characters/Characters';
+import Loader from './Loader';
 import './App.css';
 import { getResult } from './APICall';
+
 
 
 class App extends Component {
@@ -9,6 +12,7 @@ class App extends Component {
     this.state = {
       results: '',
       isLoading: true,
+      page:1,
     };
   }
   componentDidMount() {
@@ -19,14 +23,16 @@ class App extends Component {
         results: promise,
         isLoading: false
       })
+      console.log(this.state.results)
     })
   }
   render() {
     return (
-      <div className="container">
-          <p>
-            Test
-          </p>
+      <div className="">
+        {/* HEADER */}
+        {this.state.isLoading?
+        <Loader/>:<Characters characters={this.state.results} page={this.state.page}/>}
+        {/* Footer */}
       </div>
     );
   }
