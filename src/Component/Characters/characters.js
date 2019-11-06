@@ -4,14 +4,14 @@ import Button from '../Button/Button';
 
 function Characters({characters}){ 
     //map arr to Character
-    const [page, setPage] = useState(2);
+    const [page, setPage] = useState(1);
     const resPerPage = 3;
     const indexStart = (page-1)*resPerPage;
     const indexEnd = (page)*resPerPage;
     const totalPages = Math.ceil(characters.length/resPerPage);
 
     return (
-        <React.Fragment>
+        <div className = "main-layout">
         <ul className = "CardList">
             {characters.slice(indexStart,indexEnd).map(item => (
             <li key={item.id} className = 'Card'>
@@ -19,8 +19,8 @@ function Characters({characters}){
             </li>
             ))}
         </ul>
-        <Button currentPage={page} totalPages={totalPages} setCurrentPage={setPage}/>
-        </React.Fragment>
+        <Button currentPage={page} totalPages={totalPages} setPage={setPage} className = ".btn-inline"/>
+        </div>
     );
 }
 
