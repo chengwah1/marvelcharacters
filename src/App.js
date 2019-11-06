@@ -24,10 +24,10 @@ class App extends Component {
       console.log(this.state.results)
     })
   }
-  //set this.state.results
-  setResults=(newResults)=>{ //this = App
+  //set this.state.results from user search
+  setResults=(fromSearchQuery)=>{
     this.setState({
-      results: newResults,
+      results: fromSearchQuery,
       isLoading: false
     })
   }
@@ -35,7 +35,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <Header setResult={this.setResults}/>
+        <Header setResults={this.setResults}/>
         {this.state.isLoading?
         <Loader/>:<Characters characters={this.state.results}/>}
         {/* Footer */}

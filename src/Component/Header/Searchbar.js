@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { getSearchResult } from '../../APICall';
 
-function SearchBar({setResult}) {
+function SearchBar({setResults}) {
     
     const [query, setQuery] = useState("");
 
@@ -12,7 +12,7 @@ function SearchBar({setResult}) {
         getSearchResult(query)
         .then(
         (promise)=>{
-            setResult(promise);
+            setResults(promise);
         })
         setQuery("");
     }
@@ -32,6 +32,6 @@ function SearchBar({setResult}) {
 
 export default SearchBar; 
 SearchBar.propTypes = {
-    setResult: PropTypes.func.isRequired,
+    setResults: PropTypes.func.isRequired,
     }
 //onSubmit call api save result into state

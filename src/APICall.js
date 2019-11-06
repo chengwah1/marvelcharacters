@@ -1,9 +1,7 @@
-import {config} from './config';
+import { config } from './config';
 
 const md5 = require('md5');
-const privateKey = config.privateKey;
-const publicKey = config.publicKey;
-const ts = config.ts;
+const { privateKey, publicKey, ts } = config;
 const hash = md5(ts+privateKey+publicKey)
 
 export const getResult = async () => {
