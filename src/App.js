@@ -1,19 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { getResult } from './APICall';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
 
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: '',
+      isLoading: true,
+    };
+  }
+  componentDidMount() {
+    getResult()
+    .then(
+      (promise)=>{
+      this.setState({
+        results: promise,
+        isLoading: false
+      })
+    })
+  }
+  render() {
+    return (
+      <div className="container">
+          <p>
+            Test
+          </p>
+      </div>
+    );
+  }
 }
 
 export default App;
