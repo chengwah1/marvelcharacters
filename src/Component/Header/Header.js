@@ -1,9 +1,9 @@
 import React from 'react';
-import Searchbar from './Searchbar';
+import SearchBar from './Searchbar';
 
 function Header({setResult}) {
     return <React.Fragment >
-        <Searchbar setResult={setResult}/>
+        <SearchBar setResult={setResult}/>
         {/* like button */}
         </React.Fragment>
 }

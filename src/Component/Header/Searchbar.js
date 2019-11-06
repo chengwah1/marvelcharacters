@@ -4,17 +4,17 @@ import { getSearchResult } from '../../APICall';
 
 function SearchBar({setResult}) {
     
-    const [value, setValue] = useState("");
+    const [query, setQuery] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
         //call api with search query
-        getSearchResult(value)
+        getSearchResult(query)
         .then(
         (promise)=>{
             setResult(promise);
         })
-        setValue("");
+        setQuery("");
     }
 
     return(                 
@@ -22,8 +22,8 @@ function SearchBar({setResult}) {
         <input type="text" 
         className="search__field" 
         placeholder="Search for your fav Marvel hero..."
-        onChange={e => setValue(e.target.value)}
-        value={value}/>
+        onChange={e => setQuery(e.target.value)}
+        value={query}/>
         <button className="btn search__btn">
             <span>Search</span>
         </button>
