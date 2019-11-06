@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { getSearchResult } from '../../APICall';
 
-function Searchbar({setResult}) {
+function SearchBar({setResult}) {
     
     const [value, setValue] = useState("");
 
@@ -30,8 +30,8 @@ function Searchbar({setResult}) {
     </form>)
 }
 
-export default Searchbar; 
-Searchbar.propTypes = {
-    setCurrentPage: PropTypes.func.isRequired,
+export default SearchBar; 
+SearchBar.propTypes = {
+    setResult: PropTypes.func.isRequired,
     }
 //onSubmit call api save result into state
