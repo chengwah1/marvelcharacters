@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import Characters from './Component/Characters/Characters';
 import Loader from './Loader';
+import Header from './Component/Header/Header';
 import './App.css';
 import { getResult } from './APICall';
 
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      results: '',
-      isLoading: true,
-    };
-  }
+  state = {
+    results: '',
+    isLoading: true,
+  };
+  //onload fetch data
   componentDidMount() {
     getResult()
     .then(
@@ -25,10 +24,18 @@ class App extends Component {
       console.log(this.state.results)
     })
   }
+  //set this.state.results
+  setResults=(newResults)=>{ //this = App
+    this.setState({
+      results: newResults,
+      isLoading: false
+    })
+  }
   render() {
+    
     return (
-      <div className="">
-        {/* HEADER */}
+      <div className="App">
+        <Header setResult={this.setResults}/>
         {this.state.isLoading?
         <Loader/>:<Characters characters={this.state.results}/>}
         {/* Footer */}

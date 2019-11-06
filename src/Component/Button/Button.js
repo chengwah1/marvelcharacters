@@ -47,6 +47,6 @@ const Button = (props) => {
 Button.propTypes = {
 totalPages: PropTypes.number.isRequired,
 currentPage: PropTypes.number.isRequired,
-setCurrentPage: PropTypes.func.isRequired,
+setPage: PropTypes.func.isRequired,
 }
 export default Button;
