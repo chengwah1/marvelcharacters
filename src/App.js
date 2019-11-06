@@ -12,7 +12,6 @@ class App extends Component {
     this.state = {
       results: '',
       isLoading: true,
-      page:1,
     };
   }
   componentDidMount() {
@@ -31,7 +30,7 @@ class App extends Component {
       <div className="">
         {/* HEADER */}
         {this.state.isLoading?
-        <Loader/>:<Characters characters={this.state.results} page={this.state.page}/>}
+        <Loader/>:<Characters characters={this.state.results}/>}
         {/* Footer */}
       </div>
     );
