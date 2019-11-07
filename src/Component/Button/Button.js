@@ -8,9 +8,7 @@ const Button = (props) => {
         return (
             <button className="btn-inline results__btn--next" onClick={()=>props.setPage(props.currentPage+1)}>
                 <span>Next</span>
-                <svg className="search__icon">
-                    <use href="img/icons.svg#icon-triangle-right"></use>
-                </svg>
+                
             </button>
         );
     }
@@ -18,9 +16,7 @@ const Button = (props) => {
     const prevButton = ()=>{
         return (
             <button className="btn-inline results__btn--prev" onClick={()=>props.setPage(props.currentPage-1)}>
-                <svg className="search__icon">
-                    <use href="img/icons.svg#icon-triangle-left"></use>
-                </svg>
+                
                 <span>Prev</span>
             </button>
         );
