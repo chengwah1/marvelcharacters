@@ -18,6 +18,7 @@ function SearchBar({setResults}) {
             setResults(promise);
         })
         setQuery("");
+        setMatch([])
     }
     //set input value and look up dictionary matches on every key stroke
     const handleChange = (e) => {

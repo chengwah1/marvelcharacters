@@ -15,7 +15,7 @@ function Characters({characters, setCharFocus}){
         <div className = "main-layout">
         <ul className = "CardList">
             {characters.slice(indexStart,indexEnd).map(item => (
-            <li key={item.id} onClick={setCharFocus}>
+            <li key={item.id} onClick={()=>setCharFocus(item)}>
                 <Character 
                 name={item.name} 
                 image={`${item.thumbnail.path}.${item.thumbnail.extension}`}

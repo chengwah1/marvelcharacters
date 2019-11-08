@@ -13,7 +13,8 @@ class App extends Component {
   state = {
     results: '',
     isLoading: true,
-    charFocus: heroObj
+    charFocus: heroObj,
+    isOpen: true
   };
   
   //onload fetch data
@@ -34,8 +35,17 @@ class App extends Component {
       isLoading: false
     })
   }
-  setCharFocus=()=>{
-
+  //on character card click set character focus state
+  setCharFocus=(character)=>{
+    this.setState({
+      charFocus: character,
+      isOpen: true
+    })
+  }
+  //toggle overlay
+  toggleOverlay=()=>{
+    console.log(this.state.isOpen)
+    this.state.isOpen? this.setState({isOpen:false}): this.setState({isOpen:true})
   }
   render() {
     
@@ -43,10 +53,11 @@ class App extends Component {
       <div className="App">
         <Header setResults={this.setResults}/>
         {this.state.isLoading?
-        <Loader/>:<Characters characters={this.state.results}/>}
+        <Loader/>:<Characters characters={this.state.results} setCharFocus={this.setCharFocus} />}
         <Suspense fallback={<div>Loading...</div>}>
             { this.state.charFocus?
-            <Overlay charDetails = {this.state.charFocus} setCharFocus={this.setCharFocus}/>:null}
+            <Overlay charDetails = {this.state.charFocus} setCharFocus={this.setCharFocus}
+            overLayStatus={this.state.isOpen} toggleOverLay = {this.toggleOverlay}/>:null}
         </Suspense>
 
       </div>

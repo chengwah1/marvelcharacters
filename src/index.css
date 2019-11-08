@@ -112,3 +112,13 @@ body {
 .close{
   display: none;
 }
+
+.overlaybtn{
+  right: 15px;
+  position: absolute;
+  top: 10px;
+}
+
+.Card{
+  margin-top: 20px;
+}
