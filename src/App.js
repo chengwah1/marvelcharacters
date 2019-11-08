@@ -6,7 +6,7 @@ import './App.css';
 import { getResult } from './APICall';
 
 import {heroObj} from './temp';
-const Overlay = React.lazy(() => import('./Component/Overlay/CharDetail'));
+const Overlay = React.lazy(() => import('./Component/Overlay/Overlay'));
 
 
 class App extends Component {
