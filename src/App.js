@@ -1,20 +1,20 @@
-import React, { Component , Suspense } from 'react';
+import React, { Component, Suspense } from 'react';
 import Characters from './Component/Characters/Characters';
 import Loader from './Loader';
 import Header from './Component/Header/Header';
 import './App.css';
 import { getResult } from './APICall';
+import {LikeListProvider} from './LikeListContext';
 
-import {heroObj} from './temp';
 const Overlay = React.lazy(() => import('./Component/Overlay/Overlay'));
-
 
 class App extends Component {
   state = {
     results: '',
     isLoading: true,
-    charFocus: heroObj,
-    isOpen: true
+    charFocus: {},
+    isOpen: true,
+    likeList: []
   };
   
   //onload fetch data
@@ -44,22 +44,43 @@ class App extends Component {
   }
   //toggle overlay
   toggleOverlay=()=>{
-    console.log(this.state.isOpen)
     this.state.isOpen? this.setState({isOpen:false}): this.setState({isOpen:true})
   }
+  setLikeList=(id, index)=>{
+    //this = App
+    if (index === -1){//push
+      this.setState((prev)=>{
+        return {likeList:[...prev.likeList, id ]}
+      })
+    }
+    else{//remove item from array
+      const list = this.state.likeList
+      this.setState((prev)=>{
+        return{
+          likeList: [...list.slice(0,index),...list.slice(index+1)]
+        }
+      })
+      
+    }
+  }
+  
   render() {
-    
+  const contextValue = {
+      likeList: this.state.likeList,
+      setLikeList: this.setLikeList
+    }
     return (
       <div className="App">
-        <Header setResults={this.setResults}/>
-        {this.state.isLoading?
-        <Loader/>:<Characters characters={this.state.results} setCharFocus={this.setCharFocus} />}
-        <Suspense fallback={<div>Loading...</div>}>
-            { this.state.charFocus?
-            <Overlay charDetails = {this.state.charFocus} setCharFocus={this.setCharFocus}
-            overLayStatus={this.state.isOpen} toggleOverLay = {this.toggleOverlay}/>:null}
-        </Suspense>
-
+        <LikeListProvider value ={contextValue}>
+          <Header setResults={this.setResults}/>
+          {this.state.isLoading?
+          <Loader/>:<Characters characters={this.state.results} setCharFocus={this.setCharFocus} />}
+          <Suspense fallback={<div>Loading...</div>}>
+              { this.state.charFocus?
+              <Overlay charDetails = {this.state.charFocus} setCharFocus={this.setCharFocus}
+              overLayStatus={this.state.isOpen} toggleOverLay = {this.toggleOverlay}/>:null}
+          </Suspense>
+        </LikeListProvider>
       </div>
     );
   }

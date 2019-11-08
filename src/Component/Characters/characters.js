@@ -19,6 +19,7 @@ function Characters({characters, setCharFocus}){
                 <Character 
                 name={item.name} 
                 image={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                id = {item.id}
                 />
             </li>
             ))}

@@ -4,13 +4,16 @@ import ListArr from './ListArr';
 import URLs from './URLs';
 
 function Overlay(props) {
-    
-    const { name, description, thumbnail, comics, series, stories, urls} = props.charDetails
-    const isOpen = props.overLayStatus
-    
-    const toggleOverLay = props.toggleOverLay
-    const image = `${thumbnail.path}.${thumbnail.extension}`
+    //if no character on focus
+    if (Object.entries(props.charDetails).length === 0 && props.charDetails.constructor === Object)
+    return null
 
+    const { id, name, description, thumbnail, comics, series, stories, urls} = props.charDetails
+    const image = `${thumbnail.path}.${thumbnail.extension}`
+    //overlay state and handler
+    const isOpen = props.overLayStatus
+    const toggleOverLay = props.toggleOverLay
+    
     return(
     <div className = {isOpen?"overlay":"overlay close"}>
         <button onClick={toggleOverLay} className="overlaybtn">
@@ -18,7 +21,8 @@ function Overlay(props) {
         </button>
         <Character
         name={name} 
-        image={image}/>
+        image={image}
+        id = {id}/>
         <h3>{description}</h3>
         <ListArr dataArr={comics.items} Title={"Comics"} className = {"ListComics"}/>
         <ListArr dataArr={series.items} Title={"Series"} className = {"ListSeries"}/>
