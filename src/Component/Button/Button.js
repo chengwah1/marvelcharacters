@@ -8,7 +8,6 @@ const Button = (props) => {
         return (
             <button className="btn-inline results__btn--next" onClick={()=>props.setPage(props.currentPage+1)}>
                 <span>Next</span>
-                
             </button>
         );
     }
@@ -16,7 +15,6 @@ const Button = (props) => {
     const prevButton = ()=>{
         return (
             <button className="btn-inline results__btn--prev" onClick={()=>props.setPage(props.currentPage-1)}>
-                
                 <span>Prev</span>
             </button>
         );

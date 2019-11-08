@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getSearchResult } from '../../APICall';
 import AutoComplete from './AutoComplete';
 import { dictionary } from '../../dictionary';
+import Button from '../Button/Button1';
 
 function SearchBar({setResults}) {
     
@@ -42,20 +43,16 @@ function SearchBar({setResults}) {
                 placeholder="Search for your fav Marvel hero..."
                 onChange={handleChange}
                 value={query}/>
-                {match.length?<AutoComplete match={match} className ="autocomplete-items"/>:null}
+                {match.length?
+                <AutoComplete 
+                    match={match} 
+                    className ="autocomplete-items"
+                    onClick={e=>{setQuery(e.target.innerHTML);setMatch([]);}}/>
+                :null}
                 </div>
-                <button className="search__btn">
-                    <span>Search</span>
-                </button>
+                <Button displayText={"search"}/>
             </form>
-            
         </div>  )
 }
 
-export default SearchBar; 
-SearchBar.propTypes = {
-    setResults: PropTypes.func.isRequired,
-    }
-//onSubmit call api save result into state
-//auto complete = > on text change call funtion to search dic, return match save into match list
-//render match list base on state. on click function, key up key down manipulate class name
+export default SearchBar;

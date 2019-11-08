@@ -14,12 +14,16 @@ function Characters({characters}){
         <div className = "main-layout">
         <ul className = "CardList">
             {characters.slice(indexStart,indexEnd).map(item => (
-            <li key={item.id} className = 'Card'>
+            <li key={item.id} >
                 <Character name={item.name} image={`${item.thumbnail.path}.${item.thumbnail.extension}`}/>
             </li>
             ))}
         </ul>
-        <Button currentPage={page} totalPages={totalPages} setPage={setPage} className = ".btn-inline"/>
+        <Button 
+            currentPage={page} 
+            totalPages={totalPages} 
+            setPage={setPage} 
+            className = ".btn-inline"/>
         </div>
     );
 }
