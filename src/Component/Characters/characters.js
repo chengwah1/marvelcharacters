@@ -2,10 +2,11 @@ import React , { useState } from 'react';
 import Character from './Character';
 import Button from '../Button/Button';
 
-function Characters({characters}){ 
+function Characters({characters, setCharFocus}){ 
     //map arr to Character
     const [page, setPage] = useState(1);
     const resPerPage = 3;
+    
     const indexStart = (page-1)*resPerPage;
     const indexEnd = (page)*resPerPage;
     const totalPages = Math.ceil(characters.length/resPerPage);
@@ -14,8 +15,11 @@ function Characters({characters}){
         <div className = "main-layout">
         <ul className = "CardList">
             {characters.slice(indexStart,indexEnd).map(item => (
-            <li key={item.id} >
-                <Character name={item.name} image={`${item.thumbnail.path}.${item.thumbnail.extension}`}/>
+            <li key={item.id} onClick={setCharFocus}>
+                <Character 
+                name={item.name} 
+                image={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                />
             </li>
             ))}
         </ul>

@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component , Suspense } from 'react';
 import Characters from './Component/Characters/Characters';
 import Loader from './Loader';
 import Header from './Component/Header/Header';
 import './App.css';
 import { getResult } from './APICall';
 
+import {heroObj} from './temp';
+const Overlay = React.lazy(() => import('./Component/Overlay/CharDetail'));
 
 
 class App extends Component {
   state = {
     results: '',
     isLoading: true,
+    charFocus: heroObj
   };
+  
   //onload fetch data
   componentDidMount() {
     getResult()
@@ -21,7 +25,6 @@ class App extends Component {
         results: promise,
         isLoading: false
       })
-      console.log(this.state.results)
     })
   }
   //set this.state.results from user search
@@ -31,6 +34,9 @@ class App extends Component {
       isLoading: false
     })
   }
+  setCharFocus=()=>{
+
+  }
   render() {
     
     return (
@@ -38,7 +44,11 @@ class App extends Component {
         <Header setResults={this.setResults}/>
         {this.state.isLoading?
         <Loader/>:<Characters characters={this.state.results}/>}
-        {/* Footer */}
+        <Suspense fallback={<div>Loading...</div>}>
+            { this.state.charFocus?
+            <Overlay charDetails = {this.state.charFocus} setCharFocus={this.setCharFocus}/>:null}
+        </Suspense>
+
       </div>
     );
   }

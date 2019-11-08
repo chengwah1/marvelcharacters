@@ -58,8 +58,9 @@ body {
       border-radius: 0; } }
 
 .CardList {
+  width: 100%;;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   text-align: center;
 }
 
@@ -100,3 +101,11 @@ body {
   padding-top: 20px;
 }
 
+.overlay{
+  position: absolute;
+  height: 100vh;
+  width: 50%;
+  top: 0px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
