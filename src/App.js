@@ -46,11 +46,11 @@ class App extends Component {
   toggleOverlay=()=>{
     this.state.isOpen? this.setState({isOpen:false}): this.setState({isOpen:true})
   }
-  setLikeList=(id, index)=>{
+  setLikeList=(id, name, index)=>{
     //this = App
     if (index === -1){//push
       this.setState((prev)=>{
-        return {likeList:[...prev.likeList, id ]}
+        return {likeList:[...prev.likeList, {id:id,name:name} ]}
       })
     }
     else{//remove item from array

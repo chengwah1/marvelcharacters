@@ -3,6 +3,7 @@ import SearchBar from './Searchbar';
 import DropDown from './Dropdown';
 
 
+
 function Header({setResults}) {
 
     return <div className ="header">

@@ -98,7 +98,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .overlay{
@@ -108,7 +108,7 @@ body {
   top: 0px;
   background-color: rgba(0,0,0,0.5);
   color: white;
-  overflow: scroll;
+  overflow: auto;
 }
 .close{
   display: none;
@@ -118,6 +118,8 @@ body {
   right: 15px;
   position: absolute;
   top: 10px;
+  width: 22px;
+  height: 22px;
 }
 
 .Card{
@@ -127,8 +129,50 @@ body {
 .header{
   position: relative;
 }
-.LikeBtn{
-  position: absolute;
-  top: 0px;
-  right: 0px;
+
+.dropdown {
+  position: relative;
+  float: right;
 }
+.LikeBtn{
+  background-color: rgb(73, 77, 73);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+} 
+.dropdown-content {
+
+  position: absolute;
+  right:0;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.close-btn{
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border:none;
+  cursor: pointer;
+  margin-right: 2px;
+}
+.hero-name{
+  margin-left: 10px;
+}
+.dropdown:hover .dropdown-content {display: block;}
+
+
+/* .close-icon {
+  height: 2rem;
+  width: 2rem;
+  fill: #F59A83;
+  margin-right: 1rem; } */
