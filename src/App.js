@@ -28,7 +28,7 @@ class App extends Component {
       })
     })
   }
-  //set this.state.results from user search
+  //set state results from user search
   setResults=(fromSearchQuery)=>{
     this.setState({
       results: fromSearchQuery,
@@ -54,10 +54,9 @@ class App extends Component {
       })
     }
     else{//remove item from array
-      const list = this.state.likeList
       this.setState((prev)=>{
         return{
-          likeList: [...list.slice(0,index),...list.slice(index+1)]
+          likeList: [...prev.likeList.slice(0,index),...prev.likeList.slice(index+1)]
         }
       })
       
@@ -65,6 +64,7 @@ class App extends Component {
   }
   
   render() {
+    //single object to be pass to context, place here to ensure contextValue got updated when state update
   const contextValue = {
       likeList: this.state.likeList,
       setLikeList: this.setLikeList

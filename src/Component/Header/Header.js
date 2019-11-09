@@ -1,11 +1,14 @@
 import React from 'react';
 import SearchBar from './Searchbar';
+import DropDown from './Dropdown';
+
 
 function Header({setResults}) {
-    return <React.Fragment >
+
+    return <div className ="header">
         <SearchBar setResults={setResults}/>
-        {/* like button */}
-        </React.Fragment>
+        <DropDown />
+    </div>
 }
 
 export default Header; 

@@ -98,7 +98,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  overflow: scroll;
 }
 
 .overlay{
@@ -108,6 +108,7 @@ body {
   top: 0px;
   background-color: rgba(0,0,0,0.5);
   color: white;
+  overflow: scroll;
 }
 .close{
   display: none;
@@ -121,4 +122,13 @@ body {
 
 .Card{
   margin-top: 20px;
+}
+
+.header{
+  position: relative;
+}
+.LikeBtn{
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }

@@ -10,6 +10,7 @@ function Overlay(props) {
 
     const { id, name, description, thumbnail, comics, series, stories, urls} = props.charDetails
     const image = `${thumbnail.path}.${thumbnail.extension}`
+    
     //overlay state and handler
     const isOpen = props.overLayStatus
     const toggleOverLay = props.toggleOverLay
