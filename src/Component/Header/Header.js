@@ -4,10 +4,10 @@ import DropDown from './Dropdown';
 
 
 
-function Header({setResults}) {
+function Header({setResults, toggle}) {
 
     return <div className ="header">
-        <SearchBar setResults={setResults}/>
+        <SearchBar setResults={setResults} toggle={toggle}/>
         <DropDown />
     </div>
 }

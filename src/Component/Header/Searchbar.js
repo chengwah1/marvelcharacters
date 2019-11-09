@@ -4,14 +4,16 @@ import AutoComplete from './AutoComplete';
 import { dictionary } from '../../dictionary';
 import Button from '../Button/Button1';
 
-function SearchBar({setResults}) {
+function SearchBar({setResults , toggle}) {
     
-    const [query, setQuery] = useState("");
-    const [match, setMatch] = useState([]);
+    const [query, setQuery] = useState("");//form query
+    const [match, setMatch] = useState([]);//autocomplete list
     //on submit call api with user query then set to display
     const handleSubmit = (event) => {
         event.preventDefault();
+        //toggle loading
         //call api with search query
+        toggle("loader")
         getSearchResult(query)
         .then(
         (promise)=>{
@@ -25,7 +27,7 @@ function SearchBar({setResults}) {
         //caches searchText
         const searchText = e.target.value;
         e.preventDefault();
-        setQuery(()=>searchText)
+        setQuery(searchText)
         if(searchText.length>1){
             const match = dictionary.filter(item =>
                 item.name.substring(0,searchText.length).toUpperCase()===searchText.toUpperCase()

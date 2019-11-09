@@ -15,7 +15,7 @@ function DropDown() {
                 <li className="dropdown-content-item" key={item.id}>
                     <div className = "hero-name">{item.name}</div>
                     <button className={"close-btn"} onClick={()=>{
-                        const index = likeList.findIndex((o)=>o.id===item.id);console.log(index)
+                        const index = likeList.findIndex((arr)=>arr.id===item.id);console.log(index)
                         setLikeList(item.id,item.name,index)}}>
                         x
                     </button>

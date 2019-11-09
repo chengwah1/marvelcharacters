@@ -42,9 +42,14 @@ class App extends Component {
       isOpen: true
     })
   }
-  //toggle overlay
-  toggleOverlay=()=>{
-    this.state.isOpen? this.setState({isOpen:false}): this.setState({isOpen:true})
+  //toggle overlay or isLoading
+toggle=(something)=>{
+    switch(something){
+      case "loader":
+        this.state.isLoading? this.setState({isLoading:false}): this.setState({isLoading:true})
+      case "overlay":
+        this.state.isOpen? this.setState({isOpen:false}): this.setState({isOpen:true})
+    }
   }
   setLikeList=(id, name, index)=>{
     //this = App
@@ -72,13 +77,13 @@ class App extends Component {
     return (
       <div className="App">
         <LikeListProvider value ={contextValue}>
-          <Header setResults={this.setResults}/>
+          <Header setResults={this.setResults} toggle = {this.toggle}/>
           {this.state.isLoading?
           <Loader/>:<Characters characters={this.state.results} setCharFocus={this.setCharFocus} />}
           <Suspense fallback={<div>Loading...</div>}>
               { this.state.charFocus?
               <Overlay charDetails = {this.state.charFocus} setCharFocus={this.setCharFocus}
-              overLayStatus={this.state.isOpen} toggleOverLay = {this.toggleOverlay}/>:null}
+              overLayStatus={this.state.isOpen} toggle = {this.toggle}/>:null}
           </Suspense>
         </LikeListProvider>
       </div>
