@@ -10,7 +10,7 @@ const URLs = ({dataArr, Title, className}) => {
             <h2>{Title}</h2>
             {dataArr.map(item => (
             <li key={item.type}>
-                <a href={item.url} target="_blank"><h2>{item.type}</h2></a>
+                <a href={item.url} target="_blank" rel="noopener noreferrer"><h2>{item.type}</h2></a>
             </li>
             ))}
         </ul>
